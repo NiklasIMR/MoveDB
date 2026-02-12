@@ -7,7 +7,7 @@ body {
 
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #f2f2f2;
-    display: flex;
+     /*display: flex; */
     justify-content: center;
     align-items: flex-start;
 }
@@ -101,4 +101,59 @@ select {
 
     font-size: 16px;
     cursor: pointer;
+}
+
+
+/* Bereich unter dem weißen oberen Feld */
+.results {
+    padding: 15px;
+}
+
+/* Einzelne Reise-Karte */
+.reise-card {
+    background: white;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 15px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Linke Seite (Zeiten) */
+.zeit-block {
+    text-align: center;
+}
+
+.abfahrt,
+.ankunft {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dauer {
+    font-size: 12px;
+    color: gray;
+    margin: 5px 0;
+}
+
+/* Rechte Seite (Route) */
+.route-block {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.start,
+.ziel {
+    font-size: 14px;
+}
+
+.linie {
+    height: 2px;
+    background: orange;
+    margin: 6px 0;
+    border-radius: 2px;
 }
