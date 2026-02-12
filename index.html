@@ -11,8 +11,6 @@
     <meta name="theme-color" content="#2989c9">
 </head>
 
-
-
 <body>
 
     <div class="container">
@@ -36,14 +34,14 @@
         <div class="zeitwahl">
             <div class=" field">
                 <label>Uhrzeit:</label>
-                  <select id="time"></select>
+                  <select id="timeField"></select>
             </div>
         </div>
 
     </div>
 
     <div class="results">
-        <div class="reise-card">
+        <div class="reise-card" id="reise_1">
             <div class="zeit-block">
                 <div class="abfahrt">08:12</div>
                 <div class="dauer">1h 24min</div>
@@ -57,7 +55,21 @@
             </div>
         </div>
 
-        <div class="reise-card">
+        <div class="reise-card" id="reise_2">
+            <div class="zeit-block">
+                <div class="abfahrt">08:42</div>
+                <div class="dauer">1h 30min</div>
+                <div class="ankunft">10:12</div>
+            </div>
+
+            <div class="route-block" id="reise_3">
+                <div class="start">Wolfsburg E97</div>
+                <div class="linie"></div>
+                <div class="ziel">Nieschlagstraße</div>
+            </div>
+        </div>
+
+         <div class="reise-card">
             <div class="zeit-block">
                 <div class="abfahrt">08:42</div>
                 <div class="dauer">1h 30min</div>
@@ -71,14 +83,6 @@
             </div>
         </div>
     </div>
-
- 
-    
-
-
-
-
-
 
     <script src="script.js"></script>
     <script>
@@ -94,7 +98,6 @@
             });
         }
     </script>
-
 
 </body>
 
