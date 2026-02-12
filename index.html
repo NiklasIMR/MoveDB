@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>MoveDB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2989c9">
+</head>
+
+
+
+<body>
+
+    <div class="container">
+
+        <h1>Route finden</h1>
+
+        <div class="fields-wrapper">
+            <div class="field">
+                <label>Start:</label>
+                <div class="input-box">Wolfsburg E97</div>
+            </div>
+
+            <div class="field">
+                <label>Ziel:</label>
+                <div class="input-box">Nieschlagstraße</div>
+            </div>
+
+            <button id="switch">⇅</button>
+        </div>
+
+        <div class="zeitwahl">
+            <div class=" field">
+                <label>Uhrzeit:</label>
+                  <select id="time"></select>
+            </div>
+        </div>
+
+    </div>
+ 
+    
+
+
+
+
+
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js')
+                .then(function(registration) {
+                    console.log('Service Worker registriert:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Service Worker Fehler:', error);
+                });
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>

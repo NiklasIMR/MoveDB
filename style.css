@@ -1,0 +1,103 @@
+/* Grundlayout */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f2f2f2;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+/* Weißer oberer Container */
+.container {
+    width: 100%;
+    max-width: 390px;     /* iPhone 13 Pro Breite */
+    height: 28vh;         /* oberes Viertel */
+
+    background-color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
+
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    position: relative;   /* wichtig für Button-Position */
+}
+
+/* Überschrift */
+h1 {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    color: orange;
+}
+
+/* Feldstruktur */
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+/* Label links */
+.field label {
+    font-size: 13px;
+    color: #666;
+    width: 60px;
+}
+
+/* Eingabefeld rechts */
+.input-box {
+    flex: 1;
+    margin-left: 10px;
+    padding: 6px;
+
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+
+select {
+    flex: 1;               /* passt wie Input-Box in Flexbox */
+    margin-left: 10px;
+    padding: 6px;
+    
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    font-size: 14px;
+
+    appearance: none;      /* entfernt Standard-Pfeil */
+    border: none;           /* entfernt den Rahmen */
+    outline: none;          /* entfernt blauen Fokusrahmen beim Klick */
+}
+
+.fields-wrapper {
+    position: relative;
+}
+
+/* Switch Button */
+#switch {
+    position: absolute;
+    right: 20px;
+
+    /* Jetzt exakt mittig zwischen den beiden fields */
+    top: 50%;
+    transform: translateY(-50%);
+
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 50%;
+
+    width: 36px;
+    height: 36px;
+
+    font-size: 16px;
+    cursor: pointer;
+}
