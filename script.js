@@ -1,15 +1,41 @@
 // Felder nicht editierbar machen
-document.getElementById("start").contentEditable = false;
-document.getElementById("ziel").contentEditable = false;
+document.getElementById("input-start").contentEditable = false;
+document.getElementById("input-ziel").contentEditable = false;
+
+
+const fahrzeit_E97_Tor17 = [
+  "07:13","07:28","07:43","07:58","08:13","08:28","08:43","08:58",
+  "09:13","09:28","09:43","09:58","10:28","10:58","11:28","11:58",
+  "12:28","12:58","13:28","13:58","14:13","14:28","14:43","14:58",
+  "15:13","15:28","15:43","15:58","16:13","16:28","16:58","17:28"
+];
+
+const fahrzeit_Tor17_E97 = [
+  "07:12","07:27","07:42","07:57","08:12","08:27","08:42","08:57",
+  "09:12","09:42","10:12","10:42","11:12","11:42","12:12","12:42",
+  "13:12","13:42","14:12","14:33","14:48","15:03","15:18","15:33",
+  "15:48","16:03","16:18","16:33","16:48","17:18"
+];
+
+
 
 // Switch Button 
 function switchLocations() {
     console.log("switched");
-    let temp = document.getElementById("ziel").innerText;
-    document.getElementById("ziel").innerText = document.getElementById("start").innerText;
-    document.getElementById("start").innerText = temp;
+    let temp = document.getElementById("input-ziel").innerText;
+    document.getElementById("input-ziel").innerText = document.getElementById("input-start").innerText;
+    document.getElementById("input-start").innerText = temp;
+    onDropdownSelect();
 }
 document.getElementById("switch").addEventListener("click", switchLocations);
+function getAbfahrt(){
+    if(document.getElementById("input-start").innerText == "Wolfsburg E97"){
+        return fahrzeit_E97_Tor17;
+    }
+    else {
+        return fahrzeit_Tor17_E97;
+    }
+}
 
 let Abfahrt = new Date();
 let Ankunft = new Date();
@@ -65,19 +91,31 @@ function toMin(zeit) {
 
 // Zeit aktualisieren
 function onDropdownSelect() {
-    console.log("Neue Auswahl:", timeSelect.value);
+    //console.log("Neue Auswahl:", timeSelect.value);
     const reiseKarten = document.querySelectorAll(".reise-card");
     abf = toMin(timeSelect.value); //int
     //                 ^-Liefert string
 
-    for (let i = 0; i < reiseKarten.length; i++) {
-        // Abfahrt in Karte setzen
-        let newAbf = abf + 30 * i
-        reiseKarten[i].querySelector(".abfahrt").innerText = toString(newAbf);
-        reiseKarten[i].querySelector(".ankunft").innerText = toString(newAbf + 10);
-        // Optional: Ankunft berechnen (z.B. Dauer 90 min)
-        
+    let abfahrten = getAbfahrt();
+
+    let index = 0;
+
+    for(let i = 0; i < abfahrten.length; i++){
+        // gegeben = abf in Minuten
+        if(toMin(abfahrten[i]) >= abf) {
+            index = i;
+            console.log("Nächste Abfahrt: " + abfahrten[i]);
+            break;
+        }
     }
+    let dauer = 12;
+    for (let i = 0; i < reiseKarten.length; i++) {
+        reiseKarten[i].querySelector(".abfahrt").innerText = abfahrten[index+i];
+        reiseKarten[i].querySelector(".ankunft").innerText = toString(toMin(abfahrten[index+i]) + dauer);
+        reiseKarten[i].querySelector(".dauer").innerText = dauer + "min";
+        // Optional: Ankunft berechnen (z.B. Dauer 90 min)
+    }
+
 }
 timeField.addEventListener("change", onDropdownSelect);
 
